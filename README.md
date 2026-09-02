@@ -1,4 +1,4 @@
-## PkgTools
+## 🛠️PkgTools
 
 A PowerShell module that contains commands that I use in everyday tasks.
 
