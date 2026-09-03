@@ -21,4 +21,5 @@ A PowerShell module that contains commands that I use in everyday tasks.
 - **Set-EnUsKeyboard** - set english keyboard
 - **Set-ShortcutAccess** - change permissions for shortcuts in batch
 - **Update-ShortcutTarget** - change schortcut target and description in batch
-- **Zip-File** - Custom way to archive files
+- **Zip-File** - custom way to archive files
+- **Unzip-File** - custom archive extractor 
