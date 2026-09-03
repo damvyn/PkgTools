@@ -69,7 +69,7 @@ Copyright = '(c) Andrii V. All rights reserved.'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Get-Shortcut','Get-Arp','Get-MSIProperty', 'Get-FileLockProcess', 'Convert-RegToScript', 'Get-Assoc', 'Get-UserGroup', 'Zip-File', 'Set-EnUsKeyboard', 'Convert-RegToGpoXml', 'Set-ShortcutAccessForEs', 'Import-AppGroup', 'Convert-ResToScript', 'Get-DnsHostByAddress', 'Get-SpecialFolder', 'Update-ShortcutTarget', 'Convert-ShortcutToScript', 'Reset-CsvTestCase')
+FunctionsToExport = @('Get-Shortcut','Get-Arp','Get-MSIProperty', 'Get-FileLockProcess', 'Convert-RegToScript', 'Get-Assoc', 'Get-UserGroup', 'Zip-File', 'Set-EnUsKeyboard', 'Convert-RegToGpoXml', 'Set-ShortcutAccessForEs', 'Import-AppGroup', 'Convert-ResToScript', 'Get-DnsHostByAddress', 'Get-SpecialFolder', 'Update-ShortcutTarget', 'Convert-ShortcutToScript', 'Reset-CsvTestCase', 'Unzip-File')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = '*'
