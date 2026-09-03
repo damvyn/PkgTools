@@ -1,7 +1,20 @@
 function Unzip-File {
-    param([string]$Path, [string]$DestinationPath)
+	param (
+		[Parameter(Mandatory)][string]$Path,
+		[string]$DestinationPath
+	)
 
-    $null = New-Item -Path $DestinationPath -ItemType Directory
-    Add-Type -AssemblyName System.IO.Compression.FileSystem
-    [System.IO.Compression.ZipFile]::ExtractToDirectory($Path, $DestinationPath)
+	Add-Type -AssemblyName System.IO.Compression.FileSystem
+
+	$Path = _resolvePath -Path $Path
+
+	if (-not $DestinationPath) {
+		$DestinationPath = Join-Path (Split-Path $Path -Parent) ([IO.Path]::GetFileNameWithoutExtension($Path))
+	}
+	$DestinationPath = _resolvePath -Path $DestinationPath
+
+	$null = New-Item -Path $DestinationPath -ItemType Directory -Force
+	[System.IO.Compression.ZipFile]::ExtractToDirectory($Path, $DestinationPath)
+
+	return $DestinationPath
 }
