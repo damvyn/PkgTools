@@ -23,3 +23,4 @@ A PowerShell module that contains commands that I use in everyday tasks.
 - **Update-ShortcutTarget** - change schortcut target and description in batch
 - **Zip-File** - custom way to archive files
 - **Unzip-File** - custom archive extractor 
+- **Show-Tree** - build folder tree in console
