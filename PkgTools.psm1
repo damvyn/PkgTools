@@ -25,6 +25,9 @@ foreach ($PrivateScript in (Get-ChildItem -Filter "*.ps1" -Path "$PsScriptRoot\P
 
 #region ******** public functions ********
 foreach ($PublicScript in (Get-ChildItem -Filter "*.ps1" -Path "$PsScriptRoot\Public")) {
+	if ($PublicScript.BaseName -eq 'Show-Tree' -and $PSVersionTable.PSVersion -lt [version]'7.0') {
+		continue
+	}
 	. $PublicScript.FullName
 }
 #endregion ******** public functions ********
