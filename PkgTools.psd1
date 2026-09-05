@@ -69,7 +69,7 @@ Copyright = '(c) Andrii V. All rights reserved.'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Get-Shortcut','Get-Arp','Get-MSIProperty', 'Get-FileLockProcess', 'Convert-RegToScript', 'Get-Assoc', 'Get-UserGroup', 'Zip-File', 'Set-EnUsKeyboard', 'Convert-RegToGpoXml', 'Set-ShortcutAccessForEs', 'Import-AppGroup', 'Convert-ResToScript', 'Get-DnsHostByAddress', 'Get-SpecialFolder', 'Update-ShortcutTarget', 'Convert-ShortcutToScript', 'Reset-CsvTestCase', 'Unzip-File', 'Show-Tree')
+FunctionsToExport = @('Convert-RegEscapeCodes', 'Convert-RegToGpoXml', 'Convert-RegToScript', 'Convert-ResToScript', 'Convert-ShortcutToScript', 'Get-Arp', 'Get-Assoc', 'Get-DnsHostByAddress', 'Get-FileEncoding', 'Get-FileLockProcess', 'Get-MSIProperty', 'Get-Shortcut', 'Get-SpecialFolder', 'Get-UserGroup', 'Import-AppGroup', 'Reset-CsvTestCase', 'Set-EnUsKeyboard', 'Set-ShortcutAccess', 'Show-Tree', 'Unzip-File', 'Update-ShortcutTarget', 'Zip-File')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = '*'
