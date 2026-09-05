@@ -25,7 +25,9 @@ foreach ($PrivateScript in (Get-ChildItem -Filter "*.ps1" -Path "$PsScriptRoot\P
 
 #region ******** public functions ********
 foreach ($PublicScript in (Get-ChildItem -Filter "*.ps1" -Path "$PsScriptRoot\Public")) {
-	if ($PublicScript.BaseName -eq 'Show-Tree' -and $PSVersionTable.PSVersion -lt [version]'7.0') {
+	$skipScript = ($PSVersionTable.PSVersion -lt [version]'7.0' -and $PublicScript.Name -eq 'Show-Tree2.ps1') -or
+		($PSVersionTable.PSVersion -ge [version]'7.0' -and $PublicScript.Name -eq 'Show-Tree1.ps1')
+	if ($skipScript) {
 		continue
 	}
 	. $PublicScript.FullName
