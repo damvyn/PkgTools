@@ -58,5 +58,3 @@ function Copy-RebasedFile {
 
 	return $result
 }
-
-Set-Alias -Name rebase-file -Value Copy-RebasedFile
