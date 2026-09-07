@@ -18,29 +18,33 @@ function Get-Arp {
 .NOTES
 #>
 	[CmdletBinding()]
-	param([string]$DisplayName = '*', [string]$Publisher = '*' )
+	param([string]$Name = '*', [string]$Vendor = '*' )
 
 	# Service info
 	Write-Verbose "User = $env:UserDomain\$env:USERNAME"
 	Write-Verbose "OS Build = $([system.environment]::OSVersion.Version.Build)"
 	Write-Verbose "IP Address = $((Get-NetIPAddress -AddressFamily IPv4).IPAddress)"
 
-	$UninstallRoot = [System.Collections.ArrayList]@(
-		"HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*",
-		"HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*"
+	$UninstallRoot = @(
+		"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",
+        "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",
+        "HKLM:\SOFTWARE\WOw6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
 	)
+	foreach ( $key in $UninstallRoot) {
+		if (-not (Test-Path $key)) { continue }
 
-	Get-ItemProperty -Path $UninstallRoot |
-	Where-Object {
-			($null -eq $_.SystemComponent) -and
-			($null -ne $_.UninstallString) -and
-			($_.DisplayName -like $DisplayName) -and
-			($null -ne $_.DisplayName) -and
-			($_.Publisher -like $Publisher)
-	} |
-	Select-Object -Property DisplayName,
-	DisplayVersion,
-	InstallDate,
-	Publisher,
-	UninstallString
+		Get-ItemProperty -Path "$key\*" |
+		Where-Object {
+				($null -eq $_.SystemComponent) -and
+				($null -ne $_.UninstallString) -and
+				($null -ne $_.DisplayName) -and
+				($_.DisplayName -like $Name) -and
+				($_.Publisher -like $Vendor)
+		} |
+		Select-Object @{n="Vendor"; e={ $_.Publisher } },
+					  @{n="Name"; e={ $_.DisplayName } },
+		              @{n="Version"; e={ $_.DisplayVersion } },
+					  @{n="InstallDate"; e={ $_.InstallDate } },
+					  @{n="Uninstall"; e={ $_.UninstallString } }
+	}
 }
