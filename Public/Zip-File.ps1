@@ -16,8 +16,9 @@ function Zip-File {
 			$resolved = _resolvePath -Path $src
 
 			if (Test-Path $resolved -PathType Container) {
-				Get-ChildItem -Path $resolved -Recurse -File | ForEach-Object {
-					$entryName = $_.FullName.Substring($resolved.Length + 1) -replace '\\', '/'
+				$root = $resolved.TrimEnd('\', '/')
+					Get-ChildItem -Path $root -Recurse -File | ForEach-Object {
+					$entryName = $_.FullName.Substring($root.Length + 1) -replace '\\', '/'
 					[System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $_.FullName, $entryName, $CompressionLevel) | Out-Null
 				}
 			} else {
