@@ -4,8 +4,8 @@ function Zip-File {
 		[Parameter(Mandatory)][string]$ZipPath,
 		[System.IO.Compression.CompressionLevel]$CompressionLevel = [System.IO.Compression.CompressionLevel]::Optimal
 	)
-
-	Add-Type -Assembly System.IO.Compression.FileSystem
+	Add-Type -AssemblyName System.IO.Compression
+	Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 	$ZipPath = _resolvePath -Path $ZipPath
 	if (Test-Path $ZipPath) { Remove-Item $ZipPath -Force }

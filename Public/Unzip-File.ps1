@@ -4,6 +4,7 @@ function Unzip-File {
 		[string]$DestinationPath
 	)
 
+	Add-Type -AssemblyName System.IO.Compression
 	Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 	$Path = _resolvePath -Path $Path
