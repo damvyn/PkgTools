@@ -15,6 +15,7 @@ A PowerShell module that contains commands that I use in everyday tasks.
 - **Get-MSIProperty** - get msi properties
 - **Get-Shortcut** - get infor from lnk file
 - **Get-SpecialFolder** - get shell folder
+- **Get-StorePackage** - download a Microsoft Store app and its dependencies (no Store app or account needed)
 - **Get-UserGroup** - get users groups
 - **Import-AppGroup** - create AD groups from preconfigured csv files
 - **Reset-CsvTestCase** - cleanup csv files from Azure DevOps test suites
